@@ -82,7 +82,7 @@ async function proceedWithConversation() {
 
         // 2. Start the conversation session using Agent ID
         // IMPORTANT: Replace 'YOUR_AGENT_ID' with your actual agent ID from ElevenLabs
-        const agentId = 'QsTTVLzhC1FU3U8fjgrH'; // <<<--- IMPORTANT: REPLACE THIS ID!
+        const agentId = 'agent_0701kac4grezfavsqd91st31sa7k'; // <<<--- IMPORTANT: REPLACE THIS ID!
         // CORRECTED CHECK: Use the actual placeholder string from the file
         if (agentId === 'YOUR_AGENT_ID') {
             displayError("Please replace 'YOUR_AGENT_ID' in src/main.js with your actual ElevenLabs agent ID.");
@@ -217,7 +217,7 @@ function sendClosingMessage() {
         try {
             // Use sendUserMessage to prompt Winston to close gracefully
             conversation.sendUserMessage(
-                "Father Winston, our time together is drawing to a close. Please share a final blessing and word of encouragement."
+                "I need to go now. Can you summarize the conversation and wrap up the call and then end the call."
             );
         } catch (error) {
             console.error('Failed to send closing message:', error);
