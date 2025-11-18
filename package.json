@@ -2,7 +2,7 @@
   "dependencies": {
     "@11labs/client": "^0.1.0"
   },
-  "name": "ai-agent-selling-site",
+  "name": "confessionconvo",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
