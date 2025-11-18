@@ -10,6 +10,8 @@ const errorMessage = document.getElementById('error-message');
 const consentModal = document.getElementById('consentModal');
 const agreeConsentButton = document.getElementById('agreeConsentButton');
 const cancelConsentButton = document.getElementById('cancelConsentButton');
+const connectionIndicator = document.getElementById('connectionIndicator');
+const statusIcon = document.getElementById('statusIcon');
 
 // Variable for the conversation instance
 let conversation;
@@ -17,16 +19,23 @@ let conversation;
 // --- Helper function to display errors ---
 function displayError(message) {
     console.error(message);
-    errorMessage.textContent = `Error: ${message}. Please check console for details.`;
+    errorMessage.textContent = message;
+    errorMessage.classList.remove('hidden');
     startButton.disabled = false;
     stopButton.disabled = true;
     connectionStatus.textContent = 'Error';
-    agentStatus.textContent = 'Idle';
+    agentStatus.textContent = 'Ready to Listen';
+    if (connectionIndicator) {
+        connectionIndicator.className = 'w-3 h-3 rounded-full bg-red-500';
+    }
+    if (statusIcon) {
+        statusIcon.className = 'fas fa-times-circle text-red-600';
+    }
 }
 
 // --- Function to show the consent modal ---
 function showConsentModal() {
-    errorMessage.textContent = ''; // Clear previous errors
+    errorMessage.classList.add('hidden'); // Hide previous errors
     startButton.disabled = true; // Disable start button while modal is open
     if (consentModal) {
         consentModal.classList.add('visible');
@@ -47,7 +56,11 @@ function hideConsentModal() {
 
 // --- Function to actually start the connection (called after consent) ---
 async function proceedWithConversation() {
-    agentStatus.textContent = 'Connecting...';
+    agentStatus.textContent = 'Preparing...';
+    errorMessage.classList.add('hidden');
+    if (statusIcon) {
+        statusIcon.className = 'fas fa-spinner fa-spin text-indigo-600';
+    }
     // startButton is already disabled from showConsentModal
 
     // Check if Conversation class loaded correctly (basic check)
@@ -82,14 +95,26 @@ async function proceedWithConversation() {
                 console.log('Connection established.');
                 connectionStatus.textContent = 'Connected';
                 stopButton.disabled = false;
+                if (connectionIndicator) {
+                    connectionIndicator.className = 'w-3 h-3 rounded-full bg-green-500 animate-pulse';
+                }
+                if (statusIcon) {
+                    statusIcon.className = 'fas fa-check-circle text-green-600';
+                }
             },
             onDisconnect: () => {
                 console.log('Connection closed.');
-                connectionStatus.textContent = 'Disconnected';
-                agentStatus.textContent = 'Idle';
+                connectionStatus.textContent = 'Awaiting';
+                agentStatus.textContent = 'Ready to Listen';
                 startButton.disabled = false;
                 stopButton.disabled = true;
                 conversation = null;
+                if (connectionIndicator) {
+                    connectionIndicator.className = 'w-3 h-3 rounded-full bg-gray-300';
+                }
+                if (statusIcon) {
+                    statusIcon.className = 'fas fa-circle-notch text-indigo-600';
+                }
             },
             onError: (error) => {
                 displayError(error.message || 'Unknown conversation error.');
@@ -100,11 +125,21 @@ async function proceedWithConversation() {
                 startButton.disabled = false;
                 stopButton.disabled = true;
                 connectionStatus.textContent = 'Error';
-                agentStatus.textContent = 'Idle';
+                agentStatus.textContent = 'Ready';
             },
             onModeChange: (mode) => {
                 console.log(`Agent mode changed: ${mode.mode}`);
-                agentStatus.textContent = mode.mode === 'speaking' ? 'Speaking...' : 'Listening...';
+                if (mode.mode === 'speaking') {
+                    agentStatus.textContent = 'Speaking';
+                    if (statusIcon) {
+                        statusIcon.className = 'fas fa-comment-dots text-indigo-600 animate-pulse';
+                    }
+                } else {
+                    agentStatus.textContent = 'Listening';
+                    if (statusIcon) {
+                        statusIcon.className = 'fas fa-ear-listen text-purple-600';
+                    }
+                }
             },
         });
 
@@ -129,11 +164,14 @@ async function proceedWithConversation() {
 
 // --- Function to stop the conversation ---
 async function stopConversation() {
-     errorMessage.textContent = '';
+    errorMessage.classList.add('hidden');
     if (conversation) {
         console.log("Ending conversation session...");
-        agentStatus.textContent = 'Disconnecting...';
+        agentStatus.textContent = 'Closing...';
         stopButton.disabled = true;
+        if (statusIcon) {
+            statusIcon.className = 'fas fa-spinner fa-spin text-gray-600';
+        }
         try {
             await conversation.endSession();
             console.log("Conversation session ended successfully via button.");
@@ -143,16 +181,22 @@ async function stopConversation() {
             // Manually reset state if endSession fails unexpectedly
             startButton.disabled = false;
             stopButton.disabled = true; // Keep it disabled
-            connectionStatus.textContent = 'Error Disconnecting';
-            agentStatus.textContent = 'Idle';
+            connectionStatus.textContent = 'Error';
+            agentStatus.textContent = 'Ready';
             conversation = null;
         }
     } else {
          console.log("No active conversation to stop.");
          startButton.disabled = false;
          stopButton.disabled = true;
-         connectionStatus.textContent = 'Disconnected';
-         agentStatus.textContent = 'Idle';
+         connectionStatus.textContent = 'Awaiting';
+         agentStatus.textContent = 'Ready to Listen';
+         if (connectionIndicator) {
+             connectionIndicator.className = 'w-3 h-3 rounded-full bg-gray-300';
+         }
+         if (statusIcon) {
+             statusIcon.className = 'fas fa-circle-notch text-indigo-600';
+         }
     }
 }
 
@@ -173,7 +217,7 @@ if (cancelConsentButton) {
     cancelConsentButton.addEventListener('click', () => {
         hideConsentModal();
         startButton.disabled = false; // Re-enable the main start button
-        agentStatus.textContent = 'Idle'; // Reset status if needed
+        agentStatus.textContent = 'Ready to Listen'; // Reset status if needed
     });
 }
 
