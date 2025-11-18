@@ -1,5 +1,5 @@
 // CORRECTED Import: Rely on Vite/bundler to find the library in node_modules
-import { Conversation } from '@11labs/client';
+import { Conversation } from '@elevenlabs/client';
 
 // Get references to HTML elements
 const startButton = document.getElementById('startButton');
@@ -12,9 +12,13 @@ const agreeConsentButton = document.getElementById('agreeConsentButton');
 const cancelConsentButton = document.getElementById('cancelConsentButton');
 const connectionIndicator = document.getElementById('connectionIndicator');
 const statusIcon = document.getElementById('statusIcon');
+const timerSection = document.getElementById('timerSection');
+const timerDisplay = document.getElementById('timerDisplay');
 
 // Variable for the conversation instance
 let conversation;
+let conversationTimer = null;
+let timeRemaining = 60; // 1 minute in seconds
 
 // --- Helper function to display errors ---
 function displayError(message) {
@@ -98,12 +102,16 @@ async function proceedWithConversation() {
                 if (connectionIndicator) {
                     connectionIndicator.className = 'w-3 h-3 rounded-full bg-green-500 animate-pulse';
                 }
+                
+                // Start the 1-minute conversation timer
+                startConversationTimer();
                 if (statusIcon) {
                     statusIcon.className = 'fas fa-check-circle text-green-600';
                 }
             },
             onDisconnect: () => {
                 console.log('Connection closed.');
+                clearConversationTimer(); // Clear timer on disconnect
                 connectionStatus.textContent = 'Awaiting';
                 agentStatus.textContent = 'Ready to Listen';
                 startButton.disabled = false;
@@ -162,9 +170,67 @@ async function proceedWithConversation() {
     }
 }
 
+// --- Timer Functions ---
+function startConversationTimer() {
+    timeRemaining = 60; // Reset to 1 minute
+    if (timerSection) timerSection.classList.remove('hidden');
+    updateTimerDisplay();
+    
+    conversationTimer = setInterval(() => {
+        timeRemaining--;
+        updateTimerDisplay();
+        
+        if (timeRemaining <= 0) {
+            clearInterval(conversationTimer);
+            sendClosingMessage();
+        }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    if (timerDisplay) {
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = timeRemaining % 60;
+        timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        
+        // Change color as time runs low
+        if (timeRemaining <= 10) {
+            timerDisplay.className = 'font-bold text-red-600 text-xl animate-pulse';
+        } else if (timeRemaining <= 30) {
+            timerDisplay.className = 'font-bold text-orange-600 text-xl';
+        }
+    }
+}
+
+function clearConversationTimer() {
+    if (conversationTimer) {
+        clearInterval(conversationTimer);
+        conversationTimer = null;
+    }
+    if (timerSection) timerSection.classList.add('hidden');
+    if (timerDisplay) timerDisplay.className = 'font-bold text-purple-700 text-xl';
+}
+
+function sendClosingMessage() {
+    if (conversation) {
+        console.log('Timer expired - sending closing message to Winston');
+        try {
+            // Use sendUserMessage to prompt Winston to close gracefully
+            conversation.sendUserMessage(
+                "Father Winston, our time together is drawing to a close. Please share a final blessing and word of encouragement."
+            );
+        } catch (error) {
+            console.error('Failed to send closing message:', error);
+            // If sending fails, just end the session
+            stopConversation();
+        }
+    }
+}
+
 // --- Function to stop the conversation ---
 async function stopConversation() {
     errorMessage.classList.add('hidden');
+    clearConversationTimer(); // Clear the timer
     if (conversation) {
         console.log("Ending conversation session...");
         agentStatus.textContent = 'Closing...';

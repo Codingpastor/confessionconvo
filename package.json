@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@11labs/client": "^0.1.0"
+    "@elevenlabs/client": "^0.2.2"
   },
   "name": "confessionconvo",
   "version": "1.0.0",

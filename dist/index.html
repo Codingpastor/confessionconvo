@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon-CGoNLsC5.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/favicon-DyKTAmcr.ico" type="image/x-icon">
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -109,7 +109,7 @@
                           radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
       }
     </style>
-  <script type="module" crossorigin src="/assets/index-feIGRGw1.js"></script>
+  <script type="module" crossorigin src="/assets/index-BP6X3HTN.js"></script>
 </head>
 <body class="pattern-bg">
 
@@ -134,121 +134,185 @@
             <h1 class="text-5xl md:text-6xl font-bold mb-6 text-gray-800 leading-tight">
                 Explore Faith <br/>Through <span class="gradient-text">Conversation</span>
             </h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-700 leading-relaxed">
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-gray-700 leading-relaxed">
                 Welcome to a contemplative space where you can engage with Winston, 
                 a spiritual companion who guides you through the profound truths 
                 of the Mennonite Brethren Confession of Faith.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#conversation" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <i class="fas fa-comments mr-2"></i>Begin Your Journey
-                </a>
-                <a href="#about" class="border-2 border-indigo-600 text-indigo-600 font-semibold py-4 px-8 rounded-lg hover:bg-indigo-50 transition duration-300">
-                    Learn About Winston
-                </a>
-            </div>
         </div>
     </section>
 
-    <section id="conversation" class="py-20 bg-gradient-to-b from-white/50 to-indigo-50/30 backdrop-blur-sm relative overflow-hidden">
+    <section id="conversation" class="py-24 relative overflow-hidden">
+        <!-- Animated background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-50"></div>
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-duration: 8s;"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-duration: 12s; animation-delay: 2s;"></div>
+            <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-duration: 10s; animation-delay: 4s;"></div>
+        </div>
+        
         <!-- Decorative elements -->
-        <div class="absolute top-0 left-0 w-full h-full opacity-5">
-            <div class="absolute top-20 left-10 text-9xl text-indigo-600"><i class="fas fa-cross"></i></div>
-            <div class="absolute bottom-20 right-10 text-9xl text-purple-600"><i class="fas fa-dove"></i></div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+            <div class="absolute top-20 left-10 text-8xl text-indigo-600 floating-animation"><i class="fas fa-cross"></i></div>
+            <div class="absolute bottom-20 right-10 text-8xl text-purple-600 floating-animation" style="animation-delay: 2s;"><i class="fas fa-dove"></i></div>
+            <div class="absolute top-1/2 left-1/4 text-6xl text-blue-600 floating-animation" style="animation-delay: 4s;"><i class="fas fa-star"></i></div>
         </div>
         
         <div class="container mx-auto px-6 text-center relative z-10">
-            <div class="mb-8">
-                <i class="fas fa-praying-hands text-5xl text-indigo-600 opacity-70 floating-animation"></i>
+            <div class="mb-10">
+                <i class="fas fa-praying-hands text-6xl text-indigo-600 opacity-70 floating-animation"></i>
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800">Speak with Winston</h2>
+            <h2 class="text-5xl md:text-6xl font-bold mb-6 text-gray-800 gradient-text">Speak with Winston</h2>
             <p class="text-gray-700 mb-16 max-w-2xl mx-auto text-xl leading-relaxed">
                 Take a moment to pause, reflect, and engage in meaningful dialogue. 
                 Grant microphone access to speak with Winston about the articles of faith, 
                 theological questions, or spiritual guidance.
             </p>
 
-            <div class="spiritual-glow bg-gradient-to-br from-white via-indigo-50/30 to-purple-50/30 p-12 rounded-3xl max-w-2xl mx-auto border border-indigo-100/50 relative overflow-hidden">
-                <!-- Inner glow effect -->
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-400/5 to-purple-400/5 rounded-3xl"></div>
+            <!-- Main Winston Interface Card -->
+            <div class="relative max-w-3xl mx-auto">
+                <!-- Outer glow rings -->
+                <div class="absolute inset-0 bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400 rounded-[3rem] blur-2xl opacity-20 animate-pulse" style="animation-duration: 4s;"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-400 via-indigo-400 to-purple-400 rounded-[3rem] blur-xl opacity-30 animate-pulse" style="animation-duration: 6s; animation-delay: 1s;"></div>
                 
-                <div class="relative z-10">
-                    <!-- Winston Avatar -->
-                    <div class="mb-10">
-                        <div class="w-32 h-32 mx-auto bg-gradient-to-br from-indigo-100 via-purple-100 to-indigo-100 rounded-full flex items-center justify-center mb-4 floating-animation shadow-xl relative">
-                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-200/50 to-purple-200/50 rounded-full animate-pulse"></div>
-                            <i class="fas fa-dove text-5xl text-indigo-600 relative z-10"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold gradient-text mb-2">Winston</h3>
-                        <p class="text-gray-600 italic text-sm">Your Spiritual Companion</p>
-                    </div>
+                <!-- Main card -->
+                <div class="relative bg-white/95 backdrop-blur-xl p-12 md:p-16 rounded-[3rem] shadow-2xl border border-indigo-100/50 overflow-hidden">
+                    <!-- Inner gradient overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/50 via-transparent to-purple-50/50 pointer-events-none"></div>
                     
-                    <!-- Control Buttons -->
-                    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-                        <button id="startButton" class="group bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-700 hover:via-purple-700 hover:to-indigo-700 text-white font-semibold py-5 px-10 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 flex items-center justify-center space-x-3 relative overflow-hidden">
-                            <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
-                            <i class="fas fa-microphone text-xl relative z-10"></i>
-                            <span class="text-lg relative z-10">Begin Conversation</span>
-                        </button>
-                        <button id="stopButton" class="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-red-600 hover:to-rose-600 text-white font-semibold py-5 px-10 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-3" disabled>
-                            <i class="fas fa-hand-paper text-xl"></i>
-                            <span class="text-lg">End Conversation</span>
-                        </button>
-                    </div>
-
-                    <!-- Status Display -->
-                    <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-inner border border-indigo-100 mb-8">
-                        <div class="space-y-5">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-3 h-3 rounded-full bg-gray-300" id="connectionIndicator"></div>
-                                    <span class="text-gray-600 font-medium">Connection:</span>
-                                </div>
-                                <span id="connectionStatus" class="font-bold text-gray-800 text-lg">Awaiting</span>
-                            </div>
-                            <div class="h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent"></div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-circle-notch text-indigo-600" id="statusIcon"></i>
-                                    <span class="text-gray-600 font-medium">Winston is:</span>
-                                </div>
-                                <span id="agentStatus" class="font-bold text-indigo-700 text-lg">Ready to Listen</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="error-message" class="text-red-600 font-medium bg-red-50 rounded-xl p-4 hidden"></div>
-
-                    <!-- Spiritual Quote -->
-                    <div class="mt-10 pt-8 border-t border-indigo-100">
-                        <div class="flex justify-center mb-4">
-                            <i class="fas fa-book-open text-2xl text-indigo-400"></i>
-                        </div>
-                        <p class="text-gray-600 italic leading-relaxed text-lg">
-                            "We believe in the one, true, living God,<br/>Creator of heaven and earth..."
-                        </p>
-                        <p class="text-sm text-gray-500 mt-3">— Article 1: God</p>
-                    </div>
+                    <!-- Decorative corner accents -->
+                    <div class="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-indigo-200/30 to-transparent rounded-br-full"></div>
+                    <div class="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-purple-200/30 to-transparent rounded-tl-full"></div>
                     
-                    <!-- Helpful Prompts -->
-                    <div class="mt-8 pt-6 border-t border-indigo-100">
-                        <p class="text-sm text-gray-500 mb-4 font-semibold">Try asking Winston about:</p>
-                        <div class="flex flex-wrap justify-center gap-2">
-                            <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium border border-indigo-200">The Trinity</span>
-                            <span class="px-4 py-2 bg-purple-50 text-purple-700 rounded-full text-xs font-medium border border-purple-200">Baptism</span>
-                            <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium border border-indigo-200">Salvation</span>
-                            <span class="px-4 py-2 bg-purple-50 text-purple-700 rounded-full text-xs font-medium border border-purple-200">Discipleship</span>
+                    <div class="relative z-10">
+                        <!-- Winston Avatar with holy glow -->
+                        <div class="mb-12">
+                            <div class="relative inline-block">
+                                <!-- Pulsing rings -->
+                                <div class="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-ping opacity-20"></div>
+                                <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-indigo-400 rounded-full animate-pulse" style="animation-duration: 3s;"></div>
+                                
+                                <!-- Avatar circle -->
+                                <div class="relative w-40 h-40 bg-gradient-to-br from-indigo-100 via-white to-purple-100 rounded-full flex items-center justify-center shadow-2xl floating-animation border-4 border-white">
+                                    <div class="absolute inset-2 bg-gradient-to-br from-indigo-200/50 to-purple-200/50 rounded-full animate-pulse"></div>
+                                    <i class="fas fa-dove text-6xl text-indigo-600 relative z-10 drop-shadow-lg"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-3xl font-bold gradient-text mt-6 mb-2">Winston</h3>
+                            <p class="text-gray-600 italic text-lg flex items-center justify-center gap-2">
+                                <i class="fas fa-circle text-xs text-indigo-400 animate-pulse"></i>
+                                Your Spiritual Companion
+                            </p>
+                        </div>
+                        
+                        <!-- Control Buttons with divine styling -->
+                        <div class="flex flex-col sm:flex-row justify-center gap-6 mb-12">
+                            <button id="startButton" class="group relative bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 text-white font-bold py-6 px-12 rounded-2xl transition-all duration-500 shadow-xl hover:shadow-2xl transform hover:scale-105 overflow-hidden">
+                                <!-- Shimmer effect -->
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                                
+                                <!-- Button content -->
+                                <div class="relative flex items-center justify-center space-x-3">
+                                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform">
+                                        <i class="fas fa-microphone text-2xl"></i>
+                                    </div>
+                                    <span class="text-xl">Begin Conversation</span>
+                                </div>
+                                
+                                <!-- Glow effect -->
+                                <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-400 to-purple-400 opacity-0 group-hover:opacity-20 blur transition-opacity"></div>
+                            </button>
+                            
+                            <button id="stopButton" class="relative bg-gradient-to-r from-gray-300 to-gray-400 hover:from-red-600 hover:to-rose-600 text-white font-bold py-6 px-12 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105" disabled>
+                                <div class="flex items-center justify-center space-x-3">
+                                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-hand-paper text-2xl"></i>
+                                    </div>
+                                    <span class="text-xl">End Conversation</span>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Status Display with spiritual aesthetic -->
+                        <div class="bg-gradient-to-br from-indigo-50/80 to-purple-50/80 backdrop-blur-sm p-8 rounded-3xl shadow-inner border border-indigo-200/50 mb-10">
+                            <div class="space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="relative">
+                                            <div id="connectionIndicator" class="w-4 h-4 rounded-full bg-gray-300 shadow-lg"></div>
+                                            <div class="absolute inset-0 w-4 h-4 rounded-full bg-gray-300 animate-ping opacity-40"></div>
+                                        </div>
+                                        <span class="text-gray-600 font-semibold text-lg">Connection:</span>
+                                    </div>
+                                    <span id="connectionStatus" class="font-bold text-gray-800 text-xl">Awaiting</span>
+                                </div>
+                                <div class="h-px bg-gradient-to-r from-transparent via-indigo-300 to-transparent"></div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-4">
+                                        <i class="fas fa-circle-notch text-indigo-600 text-xl" id="statusIcon"></i>
+                                        <span class="text-gray-600 font-semibold text-lg">Winston is:</span>
+                                    </div>
+                                    <span id="agentStatus" class="font-bold text-indigo-700 text-xl">Ready to Listen</span>
+                                </div>
+                                <div class="h-px bg-gradient-to-r from-transparent via-indigo-300 to-transparent"></div>
+                                <div id="timerSection" class="flex items-center justify-between hidden">
+                                    <div class="flex items-center space-x-4">
+                                        <i class="fas fa-hourglass-half text-purple-600 text-xl"></i>
+                                        <span class="text-gray-600 font-semibold text-lg">Time Remaining:</span>
+                                    </div>
+                                    <span id="timerDisplay" class="font-bold text-purple-700 text-xl">1:00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="error-message" class="text-red-600 font-medium bg-red-50 rounded-2xl p-6 hidden border border-red-200"></div>
+
+                        <!-- Spiritual Quote with elegant styling -->
+                        <div class="mt-12 pt-10 border-t border-indigo-200/50">
+                            <div class="flex justify-center mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center floating-animation">
+                                    <i class="fas fa-book-open text-3xl text-indigo-600"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 italic leading-relaxed text-xl font-serif">
+                                "We believe in the one, true, living God,<br/>Creator of heaven and earth..."
+                            </p>
+                            <p class="text-sm text-indigo-600 mt-4 font-semibold">— Article 1: God</p>
+                        </div>
+                        
+                        <!-- Helpful Prompts with enhanced styling -->
+                        <div class="mt-10 pt-8 border-t border-indigo-200/50">
+                            <p class="text-sm text-gray-600 mb-6 font-semibold uppercase tracking-wider flex items-center justify-center gap-2">
+                                <i class="fas fa-lightbulb text-yellow-500"></i>
+                                Try asking Winston about:
+                            </p>
+                            <div class="flex flex-wrap justify-center gap-3">
+                                <span class="px-6 py-3 bg-gradient-to-r from-indigo-50 to-indigo-100 text-indigo-700 rounded-full text-sm font-semibold border border-indigo-200 shadow-sm hover:shadow-md transition-shadow cursor-default">
+                                    <i class="fas fa-infinity text-xs mr-2"></i>The Trinity
+                                </span>
+                                <span class="px-6 py-3 bg-gradient-to-r from-purple-50 to-purple-100 text-purple-700 rounded-full text-sm font-semibold border border-purple-200 shadow-sm hover:shadow-md transition-shadow cursor-default">
+                                    <i class="fas fa-water text-xs mr-2"></i>Baptism
+                                </span>
+                                <span class="px-6 py-3 bg-gradient-to-r from-indigo-50 to-indigo-100 text-indigo-700 rounded-full text-sm font-semibold border border-indigo-200 shadow-sm hover:shadow-md transition-shadow cursor-default">
+                                    <i class="fas fa-heart text-xs mr-2"></i>Salvation
+                                </span>
+                                <span class="px-6 py-3 bg-gradient-to-r from-purple-50 to-purple-100 text-purple-700 rounded-full text-sm font-semibold border border-purple-200 shadow-sm hover:shadow-md transition-shadow cursor-default">
+                                    <i class="fas fa-cross text-xs mr-2"></i>Discipleship
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Additional Context -->
-            <p class="text-sm text-gray-500 mt-8 max-w-xl mx-auto">
-                <i class="fas fa-info-circle mr-1"></i>
-                This conversation is confidential and meant for spiritual exploration. 
-                Winston draws from the MB Confession of Faith to guide your understanding.
-            </p>
+            <!-- Additional Context with inspiring message -->
+            <div class="mt-12 max-w-2xl mx-auto">
+                <p class="text-sm text-gray-600 italic leading-relaxed flex items-center justify-center gap-2 bg-white/60 backdrop-blur-sm py-4 px-6 rounded-2xl border border-indigo-100">
+                    <i class="fas fa-shield-alt text-indigo-400"></i>
+                    This conversation is confidential and meant for spiritual exploration. 
+                    Winston draws from the MB Confession of Faith to guide your understanding.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -295,80 +359,80 @@
     <section class="py-20 bg-white/70 backdrop-blur-sm">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Articles of Faith</h2>
-            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl spiritual-glow">
-                <div class="grid md:grid-cols-2 gap-6 text-gray-700">
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">1.</span>
-                        <span>God</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">2.</span>
-                        <span>Revelation of God</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">3.</span>
-                        <span>Creation and Humanity</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">4.</span>
-                        <span>Sin and Evil</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">5.</span>
-                        <span>Salvation</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">6.</span>
-                        <span>Nature of the Church</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">7.</span>
-                        <span>Mission of the Church</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">8.</span>
-                        <span>Christian Baptism</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">9.</span>
-                        <span>Lord's Supper</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">10.</span>
-                        <span>Discipleship</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">11.</span>
-                        <span>Marriage, Singleness, and Family</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">12.</span>
-                        <span>Society and State</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">13.</span>
-                        <span>Love and Nonresistance</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">14.</span>
-                        <span>The Sanctity of Human Life</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">15.</span>
-                        <span>Stewardship</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">16.</span>
-                        <span>The Lord's Day, Work and Rest</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">17.</span>
-                        <span>Christianity and Other Faiths</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-indigo-600 font-bold">18.</span>
-                        <span>Christ's Final Triumph</span>
-                    </div>
+            <div class="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm p-8 rounded-xl spiritual-glow">
+                <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#god" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">1.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">God</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#revelation" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">2.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Revelation of God</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#creation" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">3.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Creation and Humanity</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#sin" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">4.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Sin and Evil</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#salvation" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">5.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Salvation</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#nature-church" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">6.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Nature of the Church</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#mission" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">7.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Mission of the Church</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#baptism" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">8.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Christian Baptism</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#lords-supper" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">9.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Lord's Supper</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#discipleship" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">10.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Discipleship</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#marriage" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">11.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Marriage, Singleness, and Family</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#society" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">12.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Society and State</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#love" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">13.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Love and Nonresistance</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#sanctity" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">14.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">The Sanctity of Human Life</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#stewardship" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">15.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Stewardship</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#lords-day" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">16.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">The Lord's Day, Work and Rest</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#other-faiths" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">17.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Christianity and Other Faiths</span>
+                    </a>
+                    <a href="https://www.mennonitebrethren.ca/the-mb-confession-of-faith-full-text/#final-triumph" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition duration-200 group">
+                        <span class="text-indigo-600 font-bold group-hover:scale-110 transition-transform">18.</span>
+                        <span class="group-hover:text-indigo-700 transition-colors">Christ's Final Triumph</span>
+                    </a>
                 </div>
                 <div class="mt-8 pt-8 border-t border-gray-200 text-center">
                     <p class="text-gray-600 mb-4">Ask Winston about any of these articles to explore them further.</p>
