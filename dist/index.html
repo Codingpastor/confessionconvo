@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Customer Service Agent Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon-CGoNLsC5.ico" type="image/x-icon">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Add styles for disabled buttons */
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000; /* Ensure it's on top */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .modal-overlay.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-content {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 90%;
+        text-align: left;
+      }
+      .modal-content p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+      .modal-content a {
+        color: #4f46e5; /* Indigo-600 */
+        text-decoration: underline;
+      }
+      .modal-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+      }
+      /* Adjust scroll target for sticky header */
+      section[id] {
+        scroll-margin-top: 60px; /* Adjust this value based on header height */
+      }
+    </style>
+  <script type="module" crossorigin src="/assets/index-C8NHwTFm.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-indigo-600"><i class="fas fa-brain"></i>&nbsp;DavidWicks AI</div>
+            <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-5 rounded-lg transition duration-300">Request Full Demo</a>
+        </nav>
+    </header>
+
+    <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white pt-20 pb-24 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Revolutionize Your Customer Service with AI</h1>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Engage customers instantly, 24/7, with a highly intelligent, natural-sounding AI voice agent powered by ElevenLabs technology.</p>
+            <a href="#demo" class="bg-white text-indigo-600 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-gray-100 transition duration-300 mr-4">Try Live Demo</a>
+            <a href="#ai-agent-details" class="border border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:text-indigo-600 transition duration-300">Learn More</a>
+        </div>
+    </section>
+
+    <section id="demo" class="py-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">Experience An AI Agent Live</h2>
+            <p class="text-gray-600 mb-10 max-w-2xl mx-auto">Click "Start Conversation" and grant microphone access to speak with an AI agent directly. This agent's name is Tony. He is a customer service guide for a hypothetical plumbing company called Tony's Plumbing. The conversation is limited to 3 minutes in length.</p>
+
+            <div class="bg-gray-100 p-8 rounded-lg shadow-lg max-w-md mx-auto">
+                <div class="flex justify-center space-x-4 mb-6">
+                    <button id="startButton" class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 shadow-md flex items-center space-x-2">
+                        <i class="fas fa-microphone"></i> <span>Start Conversation</span>
+                    </button>
+                    <button id="stopButton" class="bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 shadow-md flex items-center space-x-2" disabled>
+                         <i class="fas fa-stop-circle"></i> <span>Stop Conversation</span>
+                    </button>
+                </div>
+
+                <div class="text-lg space-y-2">
+                    <p>Connection: <span id="connectionStatus" class="font-semibold text-gray-700">Disconnected</span></p>
+                    <p>Agent Status: <span id="agentStatus" class="font-semibold text-indigo-700">Idle</span></p>
+                </div>
+
+                 <div id="error-message" class="mt-4 text-red-600 font-medium"></div>
+
+                <p class="text-sm text-gray-500 mt-6">Powered by ElevenLabs Conversational AI.</p>
+            </div>
+             <p class="text-sm text-gray-500 mt-4 max-w-2xl mx-auto">
+                Note: This is just a demo agent, any resemblance to an actual service is purely coincidental. Interface can be customized.
+             </p>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why Choose an AI Agent?</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                    <div class="flex justify-center mb-4 text-3xl text-indigo-600">
+                        <i class="fas fa-clock"></i> </div>
+                    <h3 class="text-xl font-semibold mb-2">24/7 Availability</h3>
+                    <p class="text-gray-600">Provide instant support anytime, day or night, reducing wait times.</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                    <div class="flex justify-center mb-4 text-3xl text-indigo-600">
+                        <i class="fas fa-thumbs-up"></i> </div>
+                    <h3 class="text-xl font-semibold mb-2">Enhanced CX</h3>
+                    <p class="text-gray-600">Deliver consistent, high-quality interactions that improve customer satisfaction.</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                     <div class="flex justify-center mb-4 text-3xl text-indigo-600">
+                        <i class="fas fa-dollar-sign"></i> </div>
+                    <h3 class="text-xl font-semibold mb-2">Cost Reduction</h3>
+                    <p class="text-gray-600">Lower operational costs by automating routine inquiries and tasks.</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                     <div class="flex justify-center mb-4 text-3xl text-indigo-600">
+                        <i class="fas fa-users"></i> </div>
+                    <h3 class="text-xl font-semibold mb-2">Scalability</h3>
+                    <p class="text-gray-600">Easily handle fluctuating call volumes without needing extra staff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Key Features</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                 <div class="flex items-start space-x-4">
+                    <i class="fas fa-microphone-alt text-indigo-500 mt-1 text-xl w-6 text-center"></i> <div>
+                        <h4 class="text-lg font-semibold">Natural Voice Interaction</h4>
+                        <p class="text-gray-600">Leverages ElevenLabs for realistic, human-like voice conversations.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4">
+                    <i class="fas fa-brain text-indigo-500 mt-1 text-xl w-6 text-center"></i> <div>
+                        <h4 class="text-lg font-semibold">Intelligent Responses</h4>
+                        <p class="text-gray-600">Understands context and provides accurate, relevant answers.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4">
+                    <i class="fas fa-globe text-indigo-500 mt-1 text-xl w-6 text-center"></i> <div>
+                        <h4 class="text-lg font-semibold">Multilingual Support</h4>
+                        <p class="text-gray-600">Capable of communicating in multiple languages (optional).</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4">
+                    <i class="fas fa-cog text-indigo-500 mt-1 text-xl w-6 text-center"></i> <div>
+                        <h4 class="text-lg font-semibold">Customizable</h4>
+                        <p class="text-gray-600">Tailor the agent's personality, knowledge base, and workflows.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4">
+                    <i class="fas fa-puzzle-piece text-indigo-500 mt-1 text-xl w-6 text-center"></i> <div>
+                        <h4 class="text-lg font-semibold">Easy Integration</h4>
+                        <p class="text-gray-600">Seamlessly integrate with your existing website or CRM systems.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4">
+                    <i class="fas fa-chart-bar text-indigo-500 mt-1 text-xl w-6 text-center"></i> <div>
+                        <h4 class="text-lg font-semibold">Analytics Dashboard</h4>
+                        <p class="text-gray-600">Track performance and gain insights into customer interactions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai-agent-details" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Build Your Custom AI Agent with Our Expertise</h2>
+            <div class="max-w-3xl mx-auto text-gray-700 space-y-6">
+                <p class="text-lg leading-relaxed">
+                    Ready to elevate your customer interactions? Our service empowers you to develop a bespoke AI agent tailored specifically for your website or application. We guide you through the process, ensuring your AI agent aligns perfectly with your brand voice and business objectives.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    We specialize in integrating cutting-edge technologies like <a href="https://try.elevenlabs.io/davidwicks" target="_blank" rel="noopener noreferrer"><strong class="text-indigo-600">ElevenLabs</strong></a> to provide your AI agent with incredibly natural and engaging voice capabilities. Imagine your customers interacting with an AI that sounds truly human, enhancing their experience and building stronger connections.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Whether you need automated customer support, intelligent lead qualification, or interactive product guides, we can help you build an AI agent that delivers results. Let's create an AI solution that sets you apart. We'll create a free demo for your to test-drive! Just reach out using the form below.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Once the agent is created, you own it. We just help you build it and deploy it. We charge a fee for our creation services and the monthly fee is paid directly to ElevenLabs by you. We'll guide you every step of the way. Their plans start at around $5.00 a month. <a href="https://try.elevenlabs.io/davidwicks" target="_blank" rel="noopener noreferrer">Visit <strong class="text-indigo-600">ElevenLabs</strong></a> to learn more about their pricing and features.
+                </p>
+                <div class="text-center pt-6">
+                     <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 shadow-md">Get Started Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Transform Your Customer Service?</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">Let's discuss how our AI agent can be tailored to your specific business needs. Request a personalized demo today!</p>
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-xl text-left text-gray-800">                 
+                <form method="post" action="https://forms.un-static.com/forms/b8eff9416da9820127c16d26e3213130bde28136" style="width: 100%;">
+                    <div class="form-group row">
+                      <label for="name" class="col-4 col-form-label">Name:</label>
+                      <div class="col-28">
+                        <div class="input-group">
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                      <label for="email" class="col-4 col-form-label">E-mail address:</label>
+                      <div class="col-8">
+                        <div class="input-group">
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="message">Message:</label>
+                      <textarea id="message" name="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                      <div class="offset-4 col-8">
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">Request Personalized Demo</button>
+                      </div>
+                    </div>
+                    <!--
+                    <div class="text-center">
+                      <p><small>(Powered by <a rel="nofollow" href="Un-static Forms">Un-static Forms</a>)</small></p>
+                    </div>
+                    -->
+                  </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; <span id="year"></span> DavidWicks AI. All rights reserved.</p>
+            <p class="text-sm mt-2">AI Agents Built for You.</p>
+        </div>
+    </footer>
+
+
+    <!-- Consent Modal -->
+    <div id="consentModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 class="text-xl font-semibold mb-4">Consent Required</h3>
+            <p class="text-gray-700">
+                By clicking "Agree," and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as described in the <a href="https://elevenlabs.io/terms-of-use" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. If you do not wish to have your conversations recorded, please refrain from using this service.
+            </p>
+            <div class="modal-buttons">
+                <button id="cancelConsentButton" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-4 rounded-lg transition duration-300">Cancel</button>
+                <button id="agreeConsentButton" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300">Agree</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

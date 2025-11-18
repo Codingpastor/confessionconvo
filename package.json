@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@11labs/client": "^0.1.0"
+  },
+  "name": "ai-agent-selling-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "vite": "^6.2.5"
+  }
+}
