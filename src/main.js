@@ -213,14 +213,14 @@ function clearConversationTimer() {
 
 function sendClosingMessage() {
     if (conversation) {
-        console.log('Timer expired - sending closing message to Winston');
+        console.log('Timer expired - sending contextual update to Winston');
         try {
-            // Use sendUserMessage to prompt Winston to close gracefully
-            conversation.sendUserMessage(
-                "I need to go now. Can you summarize the conversation and wrap up the call and then end the call."
+            // Use sendContextualUpdate for a smoother, non-interrupting transition
+            conversation.sendContextualUpdate(
+                "Please finish what you were saying and then call the end_call tool."
             );
         } catch (error) {
-            console.error('Failed to send closing message:', error);
+            console.error('Failed to send contextual update:', error);
             // If sending fails, just end the session
             stopConversation();
         }
