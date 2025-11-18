@@ -217,7 +217,7 @@ function sendClosingMessage() {
         try {
             // Use sendContextualUpdate for a smoother, non-interrupting transition
             conversation.sendContextualUpdate(
-                "Please finish what you were saying and then call the end_call tool."
+                "Enter session wrap up now."
             );
         } catch (error) {
             console.error('Failed to send contextual update:', error);
